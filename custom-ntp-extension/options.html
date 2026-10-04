@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>自定义新标签页设置</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      max-width: 560px; margin: 40px auto; padding: 0 20px;
+      color: #202124;
+    }
+    h1 { font-size: 20px; font-weight: 500; }
+    label { display: block; font-weight: 500; margin: 20px 0 6px; }
+    input[type=text], select {
+      width: 100%; padding: 10px 12px; font-size: 15px;
+      border: 1px solid #dadce0; border-radius: 8px; box-sizing: border-box;
+    }
+    input[type=text]:focus, select:focus {
+      outline: none; border-color: #1a73e8; box-shadow: 0 0 0 2px #d2e3fc;
+    }
+    button {
+      background: #1a73e8; color: #fff; border: none; border-radius: 8px;
+      padding: 10px 24px; font-size: 15px; cursor: pointer; margin-top: 24px;
+    }
+    button:hover { background: #1557b0; }
+    .status { margin-top: 12px; font-size: 13px; color: #5f6368; }
+    .hint { font-size: 13px; color: #5f6368; margin-top: 4px; }
+    .warn {
+      font-size: 13px; color: #c5221f; margin-top: 8px;
+      background: #fce8e6; padding: 8px 12px; border-radius: 8px;
+    }
+    code { background: #f1f3f4; padding: 2px 6px; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <h1>自定义新标签页设置</h1>
+  <p class="hint">用于 Helium / Titanium Browser (io.github.jqssun.helium)</p>
+
+  <label for="url">目标 URL</label>
+  <input type="text" id="url" placeholder="chrome-native://bookmarks/folder/10397">
+  <div class="hint">
+    支持普通网址和 Chromium 内部页面：<br>
+    • <code>https://www.bing.com</code> — 普通网页<br>
+    • <code>chrome-native://bookmarks/folder/10397</code> — 书签文件夹<br>
+    • <code>chrome://bookmarks/</code> — 书签管理页
+  </div>
+
+  <label for="mode">跳转方式</label>
+  <select id="mode">
+    <option value="auto">auto — 自动（推荐：内部 URL 用 tabs API，网页用 replace）</option>
+    <option value="replace">replace — 强制 replace（内部 URL 会失败变搜索！）</option>
+    <option value="href">href — 强制 href（内部 URL 会失败变搜索！）</option>
+    <option value="iframe">iframe — 内嵌（仅普通网页，内部 URL 不支持）</option>
+  </select>
+  <div class="warn" id="warn" style="display:none">
+    ⚠ 当前模式不支持 chrome-native:// 内部 URL，会变成搜索！请选 auto。
+  </div>
+
+  <button id="save">保存</button>
+  <div class="status" id="status"></div>
+
+  <script src="options.js"></script>
+</body>
+</html>

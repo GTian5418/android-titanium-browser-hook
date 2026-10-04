@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "Custom New Tab Page for Helium",
+  "version": "1.0.0",
+  "description": "Override the Helium/Titanium browser new tab page with a custom URL. Works because the browser patches ChromeTabbedActivity to respect chrome_url_overrides (see patch.sh '# ext: ntp').",
+  "minimum_chrome_version": "120",
+  "chrome_url_overrides": {
+    "newtab": "custom_tab.html"
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "自定义新标签页设置 — 点击打开"
+  },
+  "permissions": ["storage", "tabs"],
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
