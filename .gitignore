@@ -22,3 +22,9 @@ local.properties
 # OS
 .DS_Store
 Thumbs.db
+
+# Secrets / keystore (never commit)
+keystore/
+keystore_b64.txt
+*.jks
+*.keystore
