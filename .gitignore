@@ -28,3 +28,9 @@ keystore/
 keystore_b64.txt
 *.jks
 *.keystore
+
+# Secrets / keystore (never commit)
+keystore/
+keystore_b64.txt
+*.jks
+*.keystore
