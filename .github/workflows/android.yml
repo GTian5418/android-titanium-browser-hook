@@ -2,13 +2,6 @@ name: Android CI
 
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - "custom-ntp-lsp/**"
-  pull_request:
-    paths:
-      - "custom-ntp-lsp/**"
 
 permissions:
   contents: read
